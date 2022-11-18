@@ -28,11 +28,6 @@ int main(int argc, char* args[])
 
 		return 1;
 	}
-	SDL_Rect* rect = new SDL_Rect();
-	rect->x = 0;
-	rect->y = 0;
-	rect->w = 0;
-	rect->h = 0;
 	GRenderer* renderer = new GRenderer(window);
 	GResourceManager* rscm = new GResourceManager();
 	SDL_Texture* texture = NULL;
@@ -52,7 +47,7 @@ int main(int argc, char* args[])
 		}
 		SDL_RenderClear(renderer->GetRenderer());
 		SDL_RenderCopy(renderer->GetRenderer(), texture, NULL, NULL);
-		SDL_RenderCopy(renderer->GetRenderer(), anotherTexture, rect, rect+2);
+		SDL_RenderCopy(renderer->GetRenderer(), anotherTexture, NULL, NULL);
 		SDL_RenderPresent(renderer->GetRenderer());
 	}
 
