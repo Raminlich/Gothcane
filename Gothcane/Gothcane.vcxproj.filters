@@ -30,15 +30,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Game\Source Files</Filter>
+    <ClCompile Include="Game\Main.cpp">
+      <Filter>Lib\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
+    <ClCompile Include="Lib\GRenderer.cpp">
+      <Filter>Lib\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lib\GResourceManager.cpp">
+      <Filter>Lib\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lib\GAnimator.cpp">
       <Filter>Lib\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ResourceManager.h">
+    <ClInclude Include="Lib\GRenderer.h">
+      <Filter>Lib\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\GResourceManager.h">
+      <Filter>Lib\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\GAnimator.h">
       <Filter>Lib\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

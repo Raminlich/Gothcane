@@ -16,14 +16,21 @@ CoreLib::GRenderer::GRenderer(SDL_Window* window)
 	}
 }
 
-void CoreLib::GRenderer::AssignTextures(SDL_Texture* texture)
-{
-	SDL_RenderCopy(renderer, texture, NULL, NULL);
-}
 
-void CoreLib::GRenderer::Update()
+void CoreLib::GRenderer::Update(SDL_Texture* texture)
 {
 	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, texture, NULL, NULL);
+	SDL_RenderPresent(renderer);
+}
+
+void CoreLib::GRenderer::Update(std::vector<SDL_Texture*> textures)
+{
+	SDL_RenderClear(renderer);
+	for (auto texture : textures)
+	{
+		SDL_RenderCopy(renderer, texture, NULL, NULL);
+	}
 	SDL_RenderPresent(renderer);
 }
 

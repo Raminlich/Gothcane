@@ -1,2 +1,6 @@
 ﻿  Main.cpp
+  GAnimator.cpp
+  GRenderer.cpp
+  GResourceManager.cpp
+  Generating Code...
   Gothcane.vcxproj -> C:\Users\Ramin\Documents\Repos\Gothcane\x64\Debug\Gothcane.exe

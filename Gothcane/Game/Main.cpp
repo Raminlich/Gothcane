@@ -1,7 +1,16 @@
+/*
+ ------------------------------------------------------------------------------------------------
+This file is only temporary and for the purpose of testing other library modules
+-------------------------------------------------------------------------------------------------
+*/
+
+
 #include "GResourceManager.h"
 #include "GRenderer.h"
+#include "GAnimator.h"
 #include <SDL_image.h>
 #include <iostream>
+#include <vector>
 using namespace CoreLib;
 using namespace std;
 SDL_Window* window = NULL;
@@ -28,14 +37,18 @@ int main(int argc, char* args[])
 
 		return 1;
 	}
+
+
+
 	GRenderer* renderer = new GRenderer(window);
 	GResourceManager* rscm = new GResourceManager();
-	SDL_Texture* texture = NULL;
-	SDL_Texture* anotherTexture = NULL;
-	texture = rscm->LoadTexture("C:/Users/Ramin/Documents/Repos/Gothcane/castle.png",renderer->GetRenderer());
-	anotherTexture = rscm->LoadTexture("C:/Users/Ramin/Documents/Repos/Gothcane/idle.png", renderer->GetRenderer());
-
+	SDL_Texture* spriteSheet = NULL;
+	spriteSheet = rscm->LoadTexture("Pyromancer_Idle.png", renderer->GetRenderer());
+	GAnimator* animator = new GAnimator(spriteSheet);
+	auto frameContainer = animator->SetFrames(8, 150, 0, 150, 150);
 	SDL_Event sdlEvent;
+	int frame = 0;
+	int timeFrame = 0;
 	while (!quit)
 	{
 		while (SDL_PollEvent(&sdlEvent) != 0)
@@ -45,10 +58,23 @@ int main(int argc, char* args[])
 				SDL_Quit();
 			}
 		}
-		SDL_RenderClear(renderer->GetRenderer());
-		SDL_RenderCopy(renderer->GetRenderer(), texture, NULL, NULL);
-		SDL_RenderCopy(renderer->GetRenderer(), anotherTexture, NULL, NULL);
-		SDL_RenderPresent(renderer->GetRenderer());
+
+		if (timeFrame > 300000) 
+		{
+			SDL_SetRenderDrawColor(renderer->GetRenderer(), 0, 0, 0, 0);
+			SDL_RenderClear(renderer->GetRenderer());
+			SDL_Rect* currentClip = frameContainer[frame];
+			animator->Render(renderer->GetRenderer(), 250, 150, currentClip);
+			++frame;
+			if (frame > 7)
+			{
+				frame = 0;
+			}
+			SDL_RenderPresent(renderer->GetRenderer());
+			timeFrame = 0;
+		}
+		timeFrame++;
+
 	}
 
 	return 0;

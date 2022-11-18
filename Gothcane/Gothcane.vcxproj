@@ -134,10 +134,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game\Main.cpp" />
+    <ClCompile Include="Lib\GAnimator.cpp" />
     <ClCompile Include="Lib\GRenderer.cpp" />
     <ClCompile Include="Lib\GResourceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Lib\GAnimator.h" />
     <ClInclude Include="Lib\GRenderer.h" />
     <ClInclude Include="Lib\GResourceManager.h" />
   </ItemGroup>
